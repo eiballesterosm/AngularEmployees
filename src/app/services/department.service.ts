@@ -12,11 +12,17 @@ export class DepartmentService {
 
   readonly APIUrl = "https://localhost:44394/api/";
 
+  formData: Department;
+
   constructor(private http: HttpClient) {
-    
+
   }
 
-  getDepartmentList():Observable<Department[]>{
-    return this.http.get<Department[]>(this.APIUrl+'department');
+  getDepartmentList(): Observable<Department[]> {
+    return this.http.get<Department[]>(this.APIUrl + 'department');
+  }
+
+  addDepartment(department: Department) {
+    return this.http.post(this.APIUrl + 'department', department);
   }
 }

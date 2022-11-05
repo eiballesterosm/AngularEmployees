@@ -18,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MatSortModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -45,9 +47,12 @@ import { EmployeeService } from './services/employee.service';
     MatIconModule,
     MatButtonModule,
     MatSortModule,
+    MatDialogModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [DepartmentService, EmployeeService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddDepComponent]
 })
 export class AppModule { }
