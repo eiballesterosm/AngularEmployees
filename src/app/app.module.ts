@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatSortModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -49,6 +50,7 @@ import { EmployeeService } from './services/employee.service';
     MatSortModule,
     MatDialogModule,
     FormsModule,
+    MatSnackBarModule,
     HttpClientModule
   ],
   providers: [DepartmentService, EmployeeService],

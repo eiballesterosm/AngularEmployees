@@ -15,7 +15,12 @@ import { MatDialogConfig } from '@angular/material';
 })
 export class ShowDepComponent implements OnInit {
 
-  constructor(private service: DepartmentService, private dialog: MatDialog) { }
+  constructor(private service: DepartmentService, private dialog: MatDialog) {
+    this.service.listen().subscribe((m: any) => {
+      console.log(m);
+      this.refreshDepartmentList();
+    });
+  }
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['Options', 'DepartmentID', 'DepartmentName'];
@@ -47,12 +52,12 @@ export class ShowDepComponent implements OnInit {
     this.listData.filter = filter.trim().toLowerCase();
   }
 
-  onAdd(){
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = true;
-      dialogConfig.autoFocus = true;
-      dialogConfig.width = "70%";
-      this.dialog.open(AddDepComponent, dialogConfig);
+  onAdd() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(AddDepComponent, dialogConfig);
   }
 
 }
