@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Department } from '../models/department-model';
 import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -24,5 +25,17 @@ export class DepartmentService {
 
   addDepartment(department: Department) {
     return this.http.post(this.APIUrl + 'department', department);
+  }
+
+  
+  private _listeners = new Subject<any>();
+
+  listen(): Observable<any> {
+
+    return this._listeners.asObservable();
+  }
+
+  filter(filterBy: string) {
+    this._listeners.next(filterBy);
   }
 }
