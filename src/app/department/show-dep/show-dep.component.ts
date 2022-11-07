@@ -7,6 +7,8 @@ import { AddDepComponent } from '../add-dep/add-dep.component';
 
 import { MatDialog } from '@angular/material';
 import { MatDialogConfig } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+import { EditDepComponent } from '../edit-dep/edit-dep.component';
 
 @Component({
   selector: 'app-show-dep',
@@ -15,7 +17,7 @@ import { MatDialogConfig } from '@angular/material';
 })
 export class ShowDepComponent implements OnInit {
 
-  constructor(private service: DepartmentService, private dialog: MatDialog) {
+  constructor(private service: DepartmentService, private dialog: MatDialog, private snackBar: MatSnackBar) {
     this.service.listen().subscribe((m: any) => {
       console.log(m);
       this.refreshDepartmentList();
@@ -42,10 +44,12 @@ export class ShowDepComponent implements OnInit {
 
   onEdit(department: Department) {
     console.log(department);
-  }
-
-  onDelete(id: number) {
-    console.log(id);
+    this.service.formData = department;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "80%";
+    this.dialog.open(EditDepComponent, dialogConfig);
   }
 
   applyFilter(filter: string) {
@@ -60,4 +64,16 @@ export class ShowDepComponent implements OnInit {
     this.dialog.open(AddDepComponent, dialogConfig);
   }
 
+  onDelete(departmentID: number) {
+    console.log(departmentID);
+    if (confirm('Are you sure to delete?')) {
+      this.service.deleteDepartment(departmentID).subscribe(res => {
+        this.refreshDepartmentList();
+        this.snackBar.open(res.toString(), '', {
+          duration: 5000,
+          verticalPosition: 'top'
+        });
+      });
+    }
+  }
 }

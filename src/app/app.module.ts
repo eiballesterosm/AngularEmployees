@@ -55,6 +55,6 @@ import { EmployeeService } from './services/employee.service';
   ],
   providers: [DepartmentService, EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents: [AddDepComponent]
+  entryComponents: [AddDepComponent, EditDepComponent]
 })
 export class AppModule { }
