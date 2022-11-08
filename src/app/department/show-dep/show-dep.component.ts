@@ -1,14 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { MatSort, Sort } from '@angular/material/sort';
+
 import { Department } from 'src/app/models/department-model';
 import { DepartmentService } from 'src/app/services/department.service';
 import { AddDepComponent } from '../add-dep/add-dep.component';
+import { EditDepComponent } from '../edit-dep/edit-dep.component';
 
 import { MatDialog } from '@angular/material';
 import { MatDialogConfig } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
-import { EditDepComponent } from '../edit-dep/edit-dep.component';
+
 
 @Component({
   selector: 'app-show-dep',

@@ -21,6 +21,8 @@ import { MatSortModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material';
+import { MatNativeDateModule } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -32,8 +34,8 @@ import { EmployeeService } from './services/employee.service';
     AppComponent,
     EmployeeComponent,
     ShowEmpComponent,
-    EditEmpComponent,
     AddEmpComponent,
+    EditEmpComponent,
     DepartmentComponent,
     ShowDepComponent,
     AddDepComponent,
@@ -51,10 +53,13 @@ import { EmployeeService } from './services/employee.service';
     MatDialogModule,
     FormsModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     HttpClientModule
   ],
   providers: [DepartmentService, EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents: [AddDepComponent, EditDepComponent]
+  entryComponents: [AddDepComponent, EditDepComponent, AddEmpComponent, EditEmpComponent]
 })
+
 export class AppModule { }
